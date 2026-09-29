@@ -27,4 +27,5 @@ brew install holdgrenade/tap/grenade && brew test grenade   # needs the release 
 
 ## Known limits
 
-- The install fails until `grenade-cli` has a public release `v0.1.0` with the tarball: the asset of a private repo cannot be downloaded by brew.
+- The formula downloads a release asset of `grenade-cli`, so that repo has to stay public: brew cannot download the asset of a private repo.
+- Installing brings Homebrew's `node`, also on a Mac that has Node from somewhere else.
