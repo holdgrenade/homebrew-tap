@@ -13,7 +13,7 @@ README.md            what a user reads: install, update, remove
 
 `Formula/grenade.rb` is a copy of `grenade-cli/packaging/homebrew/grenade.rb`, which `npm run release` writes there from `packaging/homebrew/formula.mjs`. To change the formula, change `formula.mjs`. For a new version:
 
-1. In `grenade-cli`: `npm run release`, then publish `release/grenade-remote-<version>.tgz` as an asset of the GitHub release `v<version>`.
+1. In `grenade-cli`: `npm run release`, then publish `release/holdgrenade-cli-<version>.tgz` as an asset of the GitHub release `v<version>`.
 2. Copy `packaging/homebrew/grenade.rb` to `Formula/grenade.rb` here, commit as `grenade <version>`, push.
 
 The `sha256` in the formula must be the one of the tarball that was uploaded: a rebuild after a source change gives another hash, so copy the formula from the same `npm run release` run as the asset.
