@@ -11,7 +11,11 @@ README.md            what a user reads: install, update, remove
 
 ## How the formula changes
 
-`Formula/grenade.rb` is a copy of `grenade-cli/packaging/homebrew/grenade.rb`, which `npm run release` writes there from `packaging/homebrew/formula.mjs`. To change the formula, change `formula.mjs`. For a new version:
+`Formula/grenade.rb` is a copy of `grenade-cli/packaging/homebrew/grenade.rb`, which `npm run release` writes there from `packaging/homebrew/formula.mjs`. To change the formula, change `formula.mjs`.
+
+A new version arrives by itself: when a push to `main` of `grenade-cli` bumps its `version`, that repo's GitHub Actions workflow (`.github/workflows/release.yml`) builds the tarball, publishes the GitHub release and npm, then commits the formula here as `grenade <version>` (author `github-actions[bot]`, through the secret `RELEASE_TOKEN` of `grenade-cli`). After such a push, `git pull` here before anything else.
+
+By hand, if the workflow is not available:
 
 1. In `grenade-cli`: `npm run release`, then publish `release/holdgrenade-cli-<version>.tgz` as an asset of the GitHub release `v<version>`.
 2. Copy `packaging/homebrew/grenade.rb` to `Formula/grenade.rb` here, commit as `grenade <version>`, push.
