@@ -3,8 +3,8 @@
 class Grenade < Formula
   desc "Watch and drive AI coding agents in your Mac's terminals from your phone"
   homepage "https://github.com/holdgrenade/grenade-cli"
-  url "https://github.com/holdgrenade/grenade-cli/releases/download/v1.0.16/holdgrenade-cli-1.0.16.tgz"
-  sha256 "94f3c1c3150b2ff6da49d536d40866c2cd9c07d7b535dc5ee6d5211e0caa9970"
+  url "https://github.com/holdgrenade/grenade-cli/releases/download/v1.0.17/holdgrenade-cli-1.0.17.tgz"
+  sha256 "9b0be23b575cd869f92929d813cefaf531f84ab4abd9fe4cd31e81a8c665c327"
   license "MIT"
 
   depends_on :macos
