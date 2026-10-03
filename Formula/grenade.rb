@@ -2,9 +2,9 @@
 # It belongs in the tap as Formula/grenade.rb: brew install holdgrenade/tap/grenade
 class Grenade < Formula
   desc "Watch and drive AI coding agents in your Mac's terminals from your phone"
-  homepage "https://github.com/holdgrenade/grenade-cli"
-  url "https://github.com/holdgrenade/grenade-cli/releases/download/v1.0.37/holdgrenade-cli-1.0.37.tgz"
-  sha256 "202e7b261bffc3a29011c290c81d5fc4ea19fbfff24798665eed0d53dd57bf95"
+  homepage "https://www.holdgrenade.com"
+  url "https://github.com/holdgrenade/grenade-cli/releases/download/v1.0.38/holdgrenade-cli-1.0.38.tgz"
+  sha256 "b50f03bc7ecf81291cd08c824dd5386c978ce977d3a38f797cf3e7b4b4607147"
   license "MIT"
 
   depends_on :macos
