@@ -1,13 +1,20 @@
 # homebrew-tap
 
-The Homebrew tap of Grenade: `brew install holdgrenade/tap/grenade`. Brew maps `holdgrenade/tap` to this repo, `holdgrenade/homebrew-tap`.
+The Homebrew tap of Grenade: `brew install holdgrenade/tap/grenade` for the CLI and daemon, `brew install --cask holdgrenade/tap/grenade-app` for the Mac app. Brew maps `holdgrenade/tap` to this repo, `holdgrenade/homebrew-tap`.
 
 ## Files
 
 ```
-Formula/grenade.rb   the formula of the `grenade` CLI and daemon. Generated, never edited here.
-README.md            what a user reads: install, update, remove
+Formula/grenade.rb     the formula of the `grenade` CLI and daemon. Generated, never edited here.
+Casks/grenade-app.rb   the cask of the Mac app: the release's DMG and its sha256. Generated, never edited here.
+README.md              what a user reads: install, update, remove
 ```
+
+## How the cask changes
+
+`Casks/grenade-app.rb` is what `grenade-mac/scripts/cask.sh` prints for a version and its DMG's sha256; `scripts/publish.sh` there writes it to `build/release/grenade-app.rb` at each release, and that repo's release workflow commits it here as `grenade-app <version>` (author `github-actions[bot]`, through the secret `GH_HOMEBREW_TAP_TOKEN` of `grenade-mac`). To change the cask, change `cask.sh`. It is `grenade-app` because a formula and a cask cannot share the name `grenade`. The first one (1.0.169, 2026-10-09) was written by hand from the live `latest.json`, with that script.
+
+By hand: `scripts/cask.sh <version> <sha256>` in `grenade-mac` (the sha256 is in `https://downloads.holdgrenade.com/mac/latest.json`), into `Casks/grenade-app.rb`, commit as `grenade-app <version>`, push.
 
 ## How the formula changes
 
@@ -25,9 +32,12 @@ The `sha256` in the formula must be the one of the tarball that was uploaded: a 
 ## Checks
 
 ```bash
-brew style Formula/grenade.rb
+brew style Formula/grenade.rb Casks/grenade-app.rb
 brew install holdgrenade/tap/grenade && brew test grenade   # needs the release asset to be downloadable
+brew fetch --cask holdgrenade/tap/grenade-app              # downloads the DMG and checks its sha256, installs nothing
 ```
+
+`brew install --cask holdgrenade/tap/grenade-app` on a Mac that runs the app from its working tree (`install-local.sh`) would replace that copy: fetch, don't install, there.
 
 ## Known limits
 
