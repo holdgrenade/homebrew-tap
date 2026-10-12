@@ -12,7 +12,7 @@ README.md              what a user reads: install, update, remove
 
 ## How the cask changes
 
-`Casks/grenade-app.rb` is what `grenade-mac/scripts/cask.sh` prints for a version and its DMG's sha256; `scripts/publish.sh` there writes it to `build/release/grenade-app.rb` at each release, and that repo's release workflow commits it here as `grenade-app <version>` (author `github-actions[bot]`, through the secret `GH_HOMEBREW_TAP_TOKEN` of `grenade-mac`). To change the cask, change `cask.sh`. It is `grenade-app` because a formula and a cask cannot share the name `grenade`. The first one (1.0.169, 2026-10-09) was written by hand from the live `latest.json`, with that script.
+`Casks/grenade-app.rb` is what `grenade-mac/scripts/cask.sh` prints for a version and its DMG's sha256; `scripts/publish.sh` there writes it to `build/release/grenade-app.rb` at each release, and that repo's release workflow commits it here as `grenade-app <version>` (author `github-actions[bot]`, through the secret `GH_HOLDGRENADE_TOKEN` of `grenade-mac`). To change the cask, change `cask.sh`. It is `grenade-app` because a formula and a cask cannot share the name `grenade`. The first one (1.0.169, 2026-10-09) was written by hand from the live `latest.json`, with that script.
 
 By hand: `scripts/cask.sh <version> <sha256>` in `grenade-mac` (the sha256 is in `https://downloads.holdgrenade.com/mac/latest.json`), into `Casks/grenade-app.rb`, commit as `grenade-app <version>`, push.
 
